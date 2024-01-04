@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import handle from "../api/test";
 import './App.css'
 
 function App() {
@@ -11,17 +12,14 @@ function App() {
         bigHeart()
     }
     const bigHeart = () => {
-        // 这里应该调用一个方法来改变样式
-        //点击后，让心变大然后马上缩小
-        // Document.querySelector('.heart').classList.add('big')
-        // setTimeout(() => {
-        //     document.querySelector('.heart').classList.remove('big')
-        // }, 1000)
-        //给heartDom添加class
         heartDom.current?.classList.add('big')
         setTimeout(() => {
             heartDom.current?.classList.remove('big')
         }, 100)
+        //写一个fetch请求根目录下api文件夹下test
+        console.log(handle)
+
+
     }
 
 
