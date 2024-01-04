@@ -33,22 +33,6 @@ function App() {
             .catch((error) => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
-
-
-
-        // const xhr = new XMLHttpRequest();
-        // xhr.open('GET', '/api/test');
-        // xhr.onload = () => {
-        //     if (xhr.status === 200) {
-        //         console.log(xhr)
-
-        //         const data = JSON.parse(xhr.responseText);
-        //         console.log(data)
-        //     }
-        // };
-        // xhr.send();
-
-
     }
 
 
