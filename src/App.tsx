@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react'
 import './App.css'
-import handler from '../api/test';
 
 function App() {
     const [count, setCount] = useState(0)
