@@ -19,7 +19,7 @@ function App() {
         testApi()
     }
     const testApi = () => {
-        fetch('https://canon-ls-internet-box.vercel.app/api/test?querys=1111')
+        fetch('/api/test')
             .then((response) => {
                 console.log(response)
                 if (!response.ok) {
