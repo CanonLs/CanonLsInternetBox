@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import './App.css'
+import handler from '../api/test';
 
 function App() {
     const [count, setCount] = useState(0)
@@ -19,33 +20,36 @@ function App() {
         testApi()
     }
     const testApi = () => {
-        // fetch('/api/test')
-        //     .then((response) => {
-        //         if (!response.ok) {
-        //             throw new Error('Network response was not ok');
-        //         }
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         console.log(data)
-        //     })
-        //     .catch((error) => {
-        //         console.error('There has been a problem with your fetch operation:', error);
-        //     });
-
-
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', '/api/test');
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                console.log(xhr)
-
-                const data = JSON.parse(xhr.responseText);
+        fetch('https://canon-ls-internet-box.vercel.app/api/test?querys=1111')
+            .then((response) => {
+                console.log(response)
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
                 console.log(data)
-            }
-        };
-        xhr.send();
+            })
+            .catch((error) => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+
+
+
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('GET', '/api/test');
+        // xhr.onload = () => {
+        //     if (xhr.status === 200) {
+        //         console.log(xhr)
+
+        //         const data = JSON.parse(xhr.responseText);
+        //         console.log(data)
+        //     }
+        // };
+        // xhr.send();
+
+
     }
 
 
