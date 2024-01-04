@@ -16,6 +16,36 @@ function App() {
             heartDom.current?.classList.remove('big')
         }, 100)
         //写一个fetch请求根目录下api文件夹下test
+        testApi()
+    }
+    const testApi = () => {
+        // fetch('/api/test')
+        //     .then((response) => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         console.log(data)
+        //     })
+        //     .catch((error) => {
+        //         console.error('There has been a problem with your fetch operation:', error);
+        //     });
+
+
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/api/test');
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                console.log(xhr)
+
+                const data = JSON.parse(xhr.responseText);
+                console.log(data)
+            }
+        };
+        xhr.send();
     }
 
 

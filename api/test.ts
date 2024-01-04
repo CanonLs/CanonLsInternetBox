@@ -1,17 +1,29 @@
-import {VercelRequest,VercelResponse} from '@vercel/node';
-/**
- * 处理函数，用于处理请求和响应
- * 
- * @param request - 请求对象
- * @param response - 响应对象
- */
-export default function handler(
-    request: VercelRequest,
-    response: VercelResponse,
-  ) {
-    response.status(200).json({
-      body: request.body, // 请求体
-      query: request.query, // 查询参数
-      cookies: request.cookies, // 部件信息
-    });
+export const config = {
+  runtime: 'edge',
+};
+ 
+export default async function handler(request: Request) {
+  const urlParams = new URL(request.url).searchParams;
+  const query = Object.fromEntries(urlParams);
+  const cookies = request.headers.get('cookie');
+  let body;
+  try {
+    body = await request.json();
+  } catch (e) {
+    body = null;
   }
+ 
+  return new Response(
+    JSON.stringify({
+      body,
+      query,
+      cookies,
+    }),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    },
+  );
+}
