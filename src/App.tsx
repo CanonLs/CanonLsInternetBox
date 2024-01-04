@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react'
-import handle from "../api/test";
 import './App.css'
 
 function App() {
@@ -17,9 +16,6 @@ function App() {
             heartDom.current?.classList.remove('big')
         }, 100)
         //写一个fetch请求根目录下api文件夹下test
-        console.log(handle)
-
-
     }
 
 
