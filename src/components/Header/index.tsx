@@ -11,6 +11,8 @@ interface IntrinsicAttributes {
 
 
 const index: React.FC<IntrinsicAttributes> = ({ style, ...props }) => {
+    console.log(props)
+
     return (
         <Header style={style}>
             <HeaderMenu></HeaderMenu>

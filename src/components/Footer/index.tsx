@@ -9,6 +9,7 @@ interface IntrinsicAttributes {
 
 
 const index: React.FC<IntrinsicAttributes> = ({ style, ...props }) => {
+    console.log(props)
     return (
         <Footer style={style}>
             Click on the Vite and React logos to learn more

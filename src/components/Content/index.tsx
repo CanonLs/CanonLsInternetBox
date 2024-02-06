@@ -9,6 +9,8 @@ interface IntrinsicAttributes {
 
 
 const index: React.FC<IntrinsicAttributes> = ({ style, ...props }) => {
+    console.log(props)
+
     const [count, setCount] = useState(0)
     const heartDom = useRef<HTMLInputElement>(null)
     const addCount = () => {
