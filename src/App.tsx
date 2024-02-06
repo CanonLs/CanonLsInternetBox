@@ -1,60 +1,29 @@
-import { useState, useRef } from 'react'
+import { Layout, ConfigProvider } from 'antd';
+import Header from './components/Header';
+import Content from './components/Content';
+import Footer from './components/Footer';
 import './App.css'
 
 function App() {
-    const [count, setCount] = useState(0)
-    const heartDom = useRef<HTMLInputElement>(null)
-
-
-    const addCount = () => {
-        setCount((count) => count + 1)
-        bigHeart()
-    }
-    const bigHeart = () => {
-        heartDom.current?.classList.add('big')
-        setTimeout(() => {
-            heartDom.current?.classList.remove('big')
-        }, 100)
-        //写一个fetch请求根目录下api文件夹下test
-        testApi()
-    }
-    const testApi = () => {
-        fetch('/api/test')
-            .then((response) => {
-                console.log(response)
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data)
-            })
-            .catch((error) => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-    }
-
 
     return (
-        <>
-            <div>
-                李潇潇
-            </div>
-            <h1 className="heart" ref={heartDom}>♥️</h1>
-            <div className="card">
-                <button onClick={() => addCount()}>
-                    好运+ {count}
-                </button>
-                <p>
-                    点上边的好运
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-            <video src="./assets/output-lr.mp4"></video>
-        </>
+        <ConfigProvider theme={{
+            components: {
+                Layout: {
+                    /* 这里是你的组件 token */
+                    bodyBg: "rgba(0, 0, 0, 0)",
+                    footerBg: "rgba(0, 0, 0, 0)",
+                    headerBg: "rgba(0, 0, 0, 0)",
+                },
+            },
+        }}>
+            <Layout style={{ minWidth: '100vw' }}>
+                <Header style={{ minHeight: '10vh' }}></Header>
+                <Content style={{ minHeight: '80vh' }} ></Content>
+                <Footer style={{ minHeight: '10vh' }}></Footer>
+            </Layout>
+        </ConfigProvider>
+
     )
 }
 
